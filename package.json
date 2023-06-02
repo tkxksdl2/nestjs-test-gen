@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "indent": "^0.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",

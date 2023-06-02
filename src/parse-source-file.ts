@@ -41,8 +41,8 @@ export function parseSourceFile(node: ts.Node): ParsedInfo {
   function constructorParser(node: ts.ConstructorDeclaration) {
     node.parameters.map((child: ts.ParameterDeclaration) => {
       let isRepo = false;
+      let inject = findInjectModifier(child);
       const name = (child.name as ts.Identifier).escapedText.toString();
-
       const typeNode = child.type as ts.TypeReferenceNode;
       let typeName = (
         typeNode.typeName as ts.Identifier
@@ -59,6 +59,7 @@ export function parseSourceFile(node: ts.Node): ParsedInfo {
         typeName,
         usingFunc: new Set(),
         isRepo,
+        inject,
       };
     });
   }
@@ -86,6 +87,23 @@ export function parseSourceFile(node: ts.Node): ParsedInfo {
         );
     }
     ts.forEachChild(node, funcParser);
+  }
+
+  function findInjectModifier(child: ts.ParameterDeclaration) {
+    let inject;
+    child.modifiers?.map((modifier) => {
+      const decoratorCallExpression = (modifier as ts.Decorator)
+        .expression as ts.CallExpression;
+      if (
+        modifier.kind == ts.SyntaxKind.Decorator &&
+        (decoratorCallExpression.expression as ts.Identifier).escapedText ===
+          "Inject"
+      ) {
+        inject = (decoratorCallExpression.arguments[0] as ts.Identifier)
+          .escapedText;
+      }
+    });
+    return inject;
   }
 
   function getExpressions(node: ts.PropertyAccessExpression, exp: string[]) {

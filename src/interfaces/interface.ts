@@ -10,4 +10,5 @@ export interface MockProvider {
   typeName: string;
   usingFunc: Set<string>;
   isRepo: boolean;
+  inject?: string;
 }

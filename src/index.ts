@@ -3,10 +3,9 @@ import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as ts from "typescript";
 import { ParsedInfo } from "./interfaces/interface";
-import { basicPage } from "./pages/basic-page";
+import { basicFragment } from "./fragments/basic";
 import { parseSourceFile } from "./parse-source-file";
 const program = new Command();
-
 if (!process.argv.slice(2).length) {
   program.outputHelp();
 }
@@ -42,5 +41,5 @@ program
   .parse(process.argv);
 
 function generateTest(info: ParsedInfo) {
-  return basicPage(info);
+  return basicFragment(info);
 }

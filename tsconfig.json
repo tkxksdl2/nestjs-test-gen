@@ -1,11 +1,11 @@
 {
-  "exclude": ["user.service.ts", "copy.spec.ts", "agenda.service.ts"],
+  "exclude": ["testingfiles"],
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "target": "es6",
-    "module": "commonjs",
+    "module": "CommonJS",
     "sourceMap": true,
     "esModuleInterop": true,
     "moduleResolution": "node"
