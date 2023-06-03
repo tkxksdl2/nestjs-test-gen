@@ -28,6 +28,6 @@ export function mockProviderInitialize(info: ParsedInfo, curIndent: number) {
           : `let ${name}: ${mockProvider.typeName};`
       )
       .join("\n"),
-    2
+    curIndent
   );
 }

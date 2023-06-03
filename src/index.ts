@@ -5,6 +5,7 @@ import * as ts from "typescript";
 import { ParsedInfo } from "./interfaces/interface";
 import { basicFragment } from "./fragments/basic";
 import { parseSourceFile } from "./parse-source-file";
+
 const program = new Command();
 if (!process.argv.slice(2).length) {
   program.outputHelp();
@@ -29,7 +30,7 @@ program
       source,
       ts.ScriptTarget.Latest
     );
-    const parsedInfo = parseSourceFile(sourcefile);
+    const parsedInfo = parseSourceFile(sourcefile, fileName);
     console.log(parsedInfo);
     Object.values(parsedInfo.mockProviders).map((v) => {
       console.log(v);
