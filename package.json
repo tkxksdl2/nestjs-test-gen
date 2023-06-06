@@ -20,6 +20,8 @@
     "unit test"
   ],
   "author": "whalebro",
+  "repository": "https://github.com/tkxksdl2/nestjs-test-gen",
+  "homepage": "https://github.com/tkxksdl2/nestjs-test-gen/blob/main/README.md",
   "license": "ISC",
   "dependencies": {
     "commander": "^10.0.1",
