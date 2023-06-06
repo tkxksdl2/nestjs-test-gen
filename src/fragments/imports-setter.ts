@@ -24,7 +24,6 @@ export function mockImportsLib(info: ParsedInfo) {
         )
       : info.genaralFunc.has(elements) && !mockBlacklists.includes(from)
   );
-  console.log(mockLib);
 
-  return mockLib.map(({ from }) => `jest.mock("${from}")`).join("\n");
+  return mockLib.map(({ from }) => `jest.mock("${from}");`).join("\n");
 }

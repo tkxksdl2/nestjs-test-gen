@@ -13,7 +13,7 @@ ${mockProviders(info)}
 ${mockImportsLib(info)}
 
 describe("${info.testTarget}"){
-  let test${info.testTarget}:${info.testTarget};
+  let test${info.testTarget}: ${info.testTarget};
 ${mockProviderInitialize(info, 2)}
 
   beforeAll(async () => {

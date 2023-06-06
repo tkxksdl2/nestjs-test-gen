@@ -7,18 +7,19 @@ import { basicFragment } from "./fragments/basic";
 import { parseSourceFile } from "./parse-source-file";
 
 const program = new Command();
-if (!process.argv.slice(2).length) {
-  program.outputHelp();
-}
 
 program
-  .name("nest-test-gen")
-  .usage("filepath")
+  .name("nestjs-test-gen")
+  .usage("<options> <filepath>")
+  .description("make a NestJS unit test file")
   .argument("<filepath>", "filepath to generate test")
+  .option("-s, --suffix <suffix>", "suffix of created test file [default:spec]")
   .action((filepath, options, command) => {
     const fileExtension = path.extname(filepath);
     const fileName = path.basename(filepath, fileExtension);
-    const outputFilename = fileName + ".spec" + fileExtension;
+    const suffix = options.suffix ? "." + options.suffix : ".sepc";
+
+    const outputFilename = fileName + suffix + fileExtension;
 
     const outputDir = path.dirname(filepath);
     const finalOutputDir = path.resolve(outputDir, outputFilename);
@@ -31,15 +32,17 @@ program
       ts.ScriptTarget.Latest
     );
     const parsedInfo = parseSourceFile(sourcefile, fileName);
-    console.log(parsedInfo);
-    Object.values(parsedInfo.mockProviders).map((v) => {
-      console.log(v);
-    });
 
     const outpurFile = generateTest(parsedInfo);
     writeFileSync(finalOutputDir, outpurFile);
   })
-  .parse(process.argv);
+  .showHelpAfterError();
+
+if (process.argv.length > 2) {
+  program.parse(process.argv);
+} else {
+  program.outputHelp();
+}
 
 function generateTest(info: ParsedInfo) {
   return basicFragment(info);
