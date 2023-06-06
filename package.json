@@ -2,7 +2,7 @@
   "name": "nestjs-test-gen",
   "version": "1.0.0",
   "description": "NestJS unit test initial file generator",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "nestjs-test-gen": "./dist/index.js"
   },
