@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from "commander";
 import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
@@ -17,7 +19,7 @@ program
   .action((filepath, options, command) => {
     const fileExtension = path.extname(filepath);
     const fileName = path.basename(filepath, fileExtension);
-    const suffix = options.suffix ? "." + options.suffix : ".sepc";
+    const suffix = options.suffix ? "." + options.suffix : ".spec";
 
     const outputFilename = fileName + suffix + fileExtension;
 

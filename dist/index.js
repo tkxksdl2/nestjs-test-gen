@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -39,7 +40,7 @@ program
     .action((filepath, options, command) => {
     const fileExtension = path.extname(filepath);
     const fileName = path.basename(filepath, fileExtension);
-    const suffix = options.suffix ? "." + options.suffix : ".sepc";
+    const suffix = options.suffix ? "." + options.suffix : ".spec";
     const outputFilename = fileName + suffix + fileExtension;
     const outputDir = path.dirname(filepath);
     const finalOutputDir = path.resolve(outputDir, outputFilename);
