@@ -12,7 +12,7 @@ ${mockRepository(info)}
 ${mockProviders(info)}
 ${mockImportsLib(info)}
 
-describe("${info.testTarget}"){
+describe("${info.testTarget}", () => {
   let test${info.testTarget}: ${info.testTarget};
 ${mockProviderInitialize(info, 2)}
 
@@ -25,6 +25,6 @@ ${mockModuleSetter(info, 4)}
     jest.restoreAllMocks();
   });
 ${todos(info)}
-}
+});
   `;
 }
