@@ -13,7 +13,7 @@ ${(0, mock_repository_1.mockRepository)(info)}
 ${(0, mock_providers_1.mockProviders)(info)}
 ${(0, imports_setter_1.mockImportsLib)(info)}
 
-describe("${info.testTarget}"){
+describe("${info.testTarget}", () => {
   let test${info.testTarget}: ${info.testTarget};
 ${(0, mock_providers_1.mockProviderInitialize)(info, 2)}
 
@@ -26,7 +26,7 @@ ${(0, mock_module_setter_1.mockModuleSetter)(info, 4)}
     jest.restoreAllMocks();
   });
 ${(0, todos_1.todos)(info)}
-}
+});
   `;
 }
 exports.basicFragment = basicFragment;
