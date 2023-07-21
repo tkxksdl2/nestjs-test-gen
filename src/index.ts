@@ -35,8 +35,8 @@ program
     );
     const parsedInfo = parseSourceFile(sourcefile, fileName);
 
-    const outpurFile = generateTest(parsedInfo);
-    writeFileSync(finalOutputDir, outpurFile);
+    const outputFile = generateTest(parsedInfo);
+    writeFileSync(finalOutputDir, outputFile);
   })
   .showHelpAfterError();
 

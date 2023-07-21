@@ -42,11 +42,10 @@ useValue: ${mockName(name)},
           `${name} = module.get${
             mockProvider.isRepo
               ? `(getRepositoryToken(${mockProvider.typeName}));`
-              : `<${
-                  mockProvider.inject
-                    ? mockProvider.inject
-                    : mockProvider.typeName
-                }>(${mockProvider.typeName});`
+              : `<${mockProvider.typeName
+                }>(${mockProvider.inject
+                  ? mockProvider.inject
+                  : mockProvider.typeName});`
           }`
       )
       .join("\n");
